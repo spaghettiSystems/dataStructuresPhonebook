@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class PhoneRecords {
     ArrayList<Phone> phoneArrayList = new ArrayList<>();
+
     ArrayList<Phone> filteredPhoneArrayList = new ArrayList<>();
 
     public PhoneRecords(String file) throws IOException {
@@ -12,6 +13,15 @@ public class PhoneRecords {
     }
 
     public PhoneRecords() {
+    }
+
+    public int findInOriginalList(int index) {
+        for (int i = 0; i < phoneArrayList.size(); i++) {
+            if (filteredPhoneArrayList.get(index) == phoneArrayList.get(i)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public void initializeFilteredList(String filter){
@@ -28,6 +38,7 @@ public class PhoneRecords {
     }
 
     void deleteRecord(int toBeDeleted){
+        filteredPhoneArrayList.remove(phoneArrayList.get(toBeDeleted));
         phoneArrayList.remove(toBeDeleted);
     }
 

@@ -83,6 +83,12 @@ public class guistuff {
                     return;
                 }
 
+                if (filterOn) {
+                    phoneBook.deleteRecord(phoneBook.findInOriginalList(phonesList.getSelectedIndex()));
+                } else {
+                    phoneBook.deleteRecord(phonesList.getSelectedIndex());
+                }
+
                 phoneBook.deleteRecord(phonesList.getSelectedIndex());
                 phonesList.clearSelection();
                 phonesList.updateUI();
@@ -101,7 +107,13 @@ public class guistuff {
                     return;
                 }
 
-                PhoneRecords.Phone toBeModified = phoneBook.phoneArrayList.get(lastSelectedIndex);
+                PhoneRecords.Phone toBeModified;
+
+                if (filterOn) {
+                    toBeModified = phoneBook.phoneArrayList.get(phoneBook.findInOriginalList(lastSelectedIndex));
+                } else {
+                    toBeModified = phoneBook.phoneArrayList.get(lastSelectedIndex);
+                }
                 toBeModified.phone = phoneTextField.getText();
                 toBeModified.name = nameTextField.getText();
 
@@ -151,6 +163,8 @@ public class guistuff {
                     JOptionPane.showMessageDialog(mainPanel, "Invalid file", "Nice try bro", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
+                filterOn = false;
+
                 phonesList.setModel(new PhoneListModel());
                 phonesList.updateUI();
             }
