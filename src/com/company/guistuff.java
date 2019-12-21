@@ -89,7 +89,6 @@ public class guistuff {
                     phoneBook.deleteRecord(phonesList.getSelectedIndex());
                 }
 
-                phoneBook.deleteRecord(phonesList.getSelectedIndex());
                 phonesList.clearSelection();
                 phonesList.updateUI();
             }
