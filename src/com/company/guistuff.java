@@ -97,7 +97,7 @@ public class guistuff {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 if (phonesList.getSelectedIndex() < 0) {
-                    JOptionPane.showMessageDialog(mainPanel, "You need to select an element before you save stuff into it!", "Seriously?", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(mainPanel, "You need to select a record before you save stuff into it!", "Seriously?", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
                 int lastSelectedIndex = phonesList.getSelectedIndex();
@@ -144,6 +144,10 @@ public class guistuff {
         saveFileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                if (saveFileTextField.getText().equals("")) {
+                    JOptionPane.showMessageDialog(mainPanel, "Try entering the name of the file before you save into it", "Seriously?", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 try {
                     phoneBook.savePhoneBook(saveFileTextField.getText());
                 } catch (IOException e) {
@@ -156,6 +160,10 @@ public class guistuff {
         openButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                if (openFileTextField.getText().equals("")) {
+                    JOptionPane.showMessageDialog(mainPanel, "Try entering the name of the file before you open it", "Seriously?", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
                 try {
                     phoneBook = new PhoneRecords(openFileTextField.getText());
                 } catch (IOException e) {
