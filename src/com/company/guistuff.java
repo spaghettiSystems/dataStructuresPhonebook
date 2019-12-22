@@ -215,8 +215,8 @@ public class guistuff {
     private boolean verifyInput() {
         phoneTextField.setText(removeNonNumbers(phoneTextField.getText()));
 
-        if (!(phoneTextField.getText().length() > 6 || phoneTextField.getText().length() > 16)) {
-            JOptionPane.showMessageDialog(mainPanel, "The phone number needs to be at least 7 numbers long but not longer than 16!", "Invalid input format", JOptionPane.ERROR_MESSAGE);
+        if (!(phoneTextField.getText().length() > 4 || phoneTextField.getText().length() > 16)) {
+            JOptionPane.showMessageDialog(mainPanel, "The phone number needs to be at least 5 numbers long but not longer than 16!", "Invalid input format", JOptionPane.ERROR_MESSAGE);
             return true;
         }
 
